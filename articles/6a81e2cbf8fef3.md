@@ -3,7 +3,7 @@ title: "Flutter Web アプリを App Engine にデプロイするまでの道の
 emoji: "🗂"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [Flutter, GoogleAppEngine]
-published: false
+published: true
 ---
 
 最近、とあるハッカソン用アプリの開発中に，Flutter Web アプリを Google App Engine にデプロイしようとしたところ、いくつかのエラーに遭遇しました。Gemininiに相談しながら行ったのですが，途中古い情報で戸惑ったりしたので，それらのエラーと解決策をまとめます。
