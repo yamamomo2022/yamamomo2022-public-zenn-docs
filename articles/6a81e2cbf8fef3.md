@@ -12,6 +12,24 @@ published: true
 - Flutter Web アプリケーション
 - Google App Engine スタンダード環境 (Python 3)
 
+### はじめの設定
+
+初回は以下の設定で行いましたが，端的に古かったようです.
+
+```yaml:app.yaml
+runtime: python27 
+api_version: 1
+threadsafe: true
+
+handlers:
+  - url: /
+    static_files: build/web/index.html 
+    upload: build/web/index.html
+
+  - url: /(.*)
+    static_files: build/web/\1
+    upload: build/web/(.*)
+```
 
 ## 発生したエラーと解決策
 1. Python 2.7 ランタイムのサポート終了
@@ -44,6 +62,23 @@ ERROR: (gcloud.app.deploy) INVALID_ARGUMENT: Error(s) encountered validating run
 ```
 
 app.yaml から api_version を削除。
+
+
+### 最終的な設定
+修正結果です．
+
+```yaml:app.yaml
+runtime: python310
+  
+handlers:
+  - url: /
+    static_files: build/web/index.html
+    upload: build/web/index.html
+
+  - url: /(.*)
+    static_files: build/web/\1
+    upload: build/web/(.*)
+```
 
 ## まとめ
 これらのエラーを解決することで、Flutter Web アプリケーションを Google App Engine にデプロイすることができました。同様の問題に遭遇した方の参考になれば幸いです。
